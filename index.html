@@ -22,8 +22,8 @@
             --blue-accent: #3A669B;
             --blue-dark: #1E3A5F;
             --text-main: #141414;
-            --glass-bg: rgba(255, 255, 255, 0.45);
-            --glass-border: rgba(255, 255, 255, 0.7);
+            --glass-bg: rgba(255, 255, 255, 0.55);
+            --glass-border: rgba(255, 255, 255, 0.8);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
@@ -33,8 +33,6 @@
             color: var(--text-main); 
             font-family: 'Plus Jakarta Sans', sans-serif; 
             overflow-x: hidden;
-            selection-background-color: var(--blue-accent);
-            selection-color: #fff;
         }
 
         /* КАСТОМНИЙ КУРСОР */
@@ -42,13 +40,13 @@
             width: 8px; height: 8px; background: var(--blue-accent);
             position: fixed; top: 0; left: 0; border-radius: 50%;
             pointer-events: none; z-index: 9999; transform: translate(-50%, -50%);
-            transition: transform 0.1s ease, background 0.3s ease;
+            transition: transform 0.1s ease;
         }
         #cursor-outline {
             width: 40px; height: 40px; border: 1.5px solid var(--blue-accent);
             position: fixed; top: 0; left: 0; border-radius: 50%;
             pointer-events: none; z-index: 9998; transform: translate(-50%, -50%);
-            transition: transform 0.25s ease-out, border-color 0.3s ease;
+            transition: transform 0.25s ease-out;
         }
 
         /* НАВІГАЦІЯ */
@@ -70,11 +68,6 @@
             font-size: 0.95rem; letter-spacing: 2px; text-transform: uppercase;
             position: relative; padding: 5px 0;
         }
-        .nav-link::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 0%; 
-            height: 2px; background: #fff; transition: width 0.3s ease;
-        }
-        .nav-link:hover::after { width: 100%; }
 
         /* HERO SECTION */
         .hero { 
@@ -99,60 +92,38 @@
             color: #4A4A4A; max-width: 480px; 
         }
 
-        /* ІНТЕРАКТИВНИЙ 3D ВІЗУАЛ */
+        /* 3D ВІЗУАЛ СТАКАНЧИКА */
         .hero-visual { 
             flex: 0 0 50%; height: 100vh; display: flex; 
             align-items: center; justify-content: center; position: relative; 
         }
-
-        /* Абстрактні анімовані плями */
-        .blob-1, .blob-2 {
-            position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.6;
-            animation: float 12s infinite alternate ease-in-out;
-        }
-        .blob-1 { width: 500px; height: 500px; background: #E2ECF8; top: 15%; right: 10%; }
-        .blob-2 { width: 350px; height: 350px; background: #FCECE4; bottom: 15%; right: 25%; animation-delay: -5s; }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            100% { transform: translate(40px, -50px) scale(1.15) rotate(45deg); }
-        }
-
         .cup-container { 
             position: relative; z-index: 5; perspective: 1200px; 
             width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
         }
-
-        .cup-wrapper {
-            position: relative; transform-style: preserve-3d;
-            transition: transform 0.1s ease-out;
-        }
-
+        .cup-wrapper { position: relative; transform-style: preserve-3d; }
         .cup-img { 
             width: clamp(320px, 38vw, 520px); height: auto; 
             filter: drop-shadow(0 35px 50px rgba(30, 58, 95, 0.18)); 
             user-select: none; pointer-events: none;
-            transition: opacity 0.2s ease;
         }
 
-        /* КНОПКА */
         .btn-primary { 
             padding: 22px 48px; background: var(--blue-accent); color: white; 
             text-decoration: none; border-radius: 100px; font-weight: 700; 
-            display: inline-flex; align-items: center; gap: 15px; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 15px 35px rgba(74, 118, 168, 0.25); position: relative; overflow: hidden;
+            display: inline-flex; align-items: center; gap: 15px; transition: 0.4s ease;
+            box-shadow: 0 15px 35px rgba(74, 118, 168, 0.25);
         }
         .btn-primary:hover { 
             transform: translateY(-5px) scale(1.03); 
-            box-shadow: 0 25px 45px rgba(74, 118, 168, 0.4); 
             background: var(--blue-dark);
         }
 
-        /* БІЖУЧИЙ РЯДОК (MARQUEE) */
+        /* БІЖУЧИЙ РЯДОК */
         .marquee-container {
             background: var(--blue-accent); color: #fff; padding: 20px 0;
             overflow: hidden; white-space: nowrap; transform: rotate(-1.5deg) scale(1.02);
-            margin: 40px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin: 40px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.05); position: relative; z-index: 3;
         }
         .marquee-content {
             display: inline-block; animation: marquee 20s linear infinite;
@@ -163,21 +134,45 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* БЛОК МЕНЮ (BENTO GRID) */
-        .menu-section { padding: 100px 6%; position: relative; z-index: 2; }
+        /* МЕНЮ СЕКЦІЯ ТА ФОНОВІ ПЕРСОНАЖІ */
+        .menu-section { 
+            padding: 120px 6%; position: relative; z-index: 2; 
+        }
         .section-title {
             font-family: 'Pilowlava', sans-serif; font-size: clamp(2.5rem, 5vw, 4.5rem);
-            color: var(--blue-accent); margin-bottom: 50px; text-align: center;
+            color: var(--blue-accent); margin-bottom: 60px; text-align: center;
         }
+
+        /* ІЛЮСТРАЦІЇ НА ТЛІ */
+        .bg-illustration {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.85;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.05));
+            transition: transform 0.2s ease-out;
+        }
+        
+        .man-eating-bg {
+            width: clamp(250px, 22vw, 380px);
+            left: 2%;
+            top: 15%;
+        }
+
+        .girl-eating-bg {
+            width: clamp(220px, 20vw, 340px);
+            right: 3%;
+            bottom: 10%;
+        }
+
         .bento-grid {
             display: grid; grid-template-columns: repeat(12, 1fr); gap: 25px;
-            max-width: 1300px; margin: 0 auto;
+            max-width: 1200px; margin: 0 auto; position: relative; z-index: 2;
         }
         .bento-card {
             background: var(--glass-bg); backdrop-filter: blur(16px);
             border: 1px solid var(--glass-border); border-radius: 32px;
             padding: 40px; transition: transform 0.4s ease, box-shadow 0.4s ease;
-            position: relative; overflow: hidden;
         }
         .bento-card:hover {
             transform: translateY(-8px);
@@ -202,14 +197,14 @@
         .review-card { 
             max-width: 800px; margin: 0 auto; padding: 60px 40px;
             background: #fff; border-radius: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.04); position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.04); position: relative; z-index: 2;
         }
         .review-text { 
             font-size: 1.8rem; font-style: italic; line-height: 1.4; 
             color: var(--blue-dark); margin-bottom: 25px; display: none; opacity: 0;
         }
         .review-text.active { display: block; opacity: 1; }
-        .author { font-size: 1.1rem; font-weight: 700; color: var(--blue-accent); text-transform: uppercase; letter-spacing: 1px; }
+        .author { font-size: 1.1rem; font-weight: 700; color: var(--blue-accent); text-transform: uppercase; }
 
         .arrows { display: flex; justify-content: center; gap: 20px; margin-top: 40px; }
         .arrow { 
@@ -219,24 +214,21 @@
         }
         .arrow:hover { background: var(--blue-accent); color: white; transform: scale(1.1); }
 
-        /* TELEGRAM КНОПКА */
+        /* TELEGRAM */
         .tg-link { 
             position: fixed; bottom: 35px; right: 35px; width: 65px; height: 65px; 
             background: #0088cc; border-radius: 50%; display: flex; align-items: center; 
-            justify-content: center; z-index: 1000; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            justify-content: center; z-index: 1000; transition: 0.4s ease;
             box-shadow: 0 10px 25px rgba(0,136,204,0.4);
         }
         .tg-link:hover { transform: scale(1.15) rotate(12deg); }
 
-        /* АДАПТИВНІСТЬ */
         @media (max-width: 992px) {
-            .hero { flex-direction: column; text-align: center; justify-content: center; padding-top: 120px; }
+            .hero { flex-direction: column; text-align: center; padding-top: 120px; }
             .hero-text { flex: 0 0 100%; }
-            .hero-text p { margin: 0 auto 40px auto; }
-            .hero-visual { flex: 0 0 100%; height: 50vh; width: 100%; }
+            .hero-visual { flex: 0 0 100%; height: 50vh; }
             .card-large, .card-medium, .card-small { grid-column: span 12; }
-            header { mix-blend-mode: normal; background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); }
-            .logo, .nav-link { color: var(--blue-dark); }
+            .man-eating-bg, .girl-eating-bg { opacity: 0.25; width: 180px; }
             * { cursor: auto !important; }
             #cursor-dot, #cursor-outline { display: none; }
         }
@@ -244,16 +236,13 @@
 </head>
 <body>
 
-    <!-- КАСТОМНИЙ КУРСОР -->
     <div id="cursor-dot"></div>
     <div id="cursor-outline"></div>
 
-    <!-- КНОПКА TELEGRAM -->
     <a href="https://t.me/skripka_kava" class="tg-link" target="_blank" aria-label="Telegram">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .24z"/></svg>
     </a>
 
-    <!-- ХЕДЕР -->
     <header>
         <a href="#" class="logo">СКРІПКА</a>
         <nav class="nav-links">
@@ -262,12 +251,11 @@
         </nav>
     </header>
 
-    <!-- HERO СЕКЦІЯ -->
     <section class="hero">
         <div class="hero-text">
             <span class="hero-badge">Файна Таун • Київ</span>
             <h1>SKRIPKA<br>KAVA</h1>
-            <p>Ваш щоденний ритуал у Файна Таун тепер у повному 3D огляді. Повертайте стаканчик курсором та обирайте свій настрій.</p>
+            <p>Ваш щоденний ритуал у Файна Таун у повному 3D огляді. Повертайте стаканчик курсором та обирайте свій настрій.</p>
             <a href="#menu" class="btn-primary">
                 ПЕРЕГЛЯНУТИ МЕНЮ
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -275,27 +263,27 @@
         </div>
 
         <div class="hero-visual">
-            <div class="blob-1"></div>
-            <div class="blob-2"></div>
-            
-            <div class="cup-container" id="cup-scene">
+            <div class="cup-container">
                 <div class="cup-wrapper" id="cup-wrapper">
-                    <!-- Оновлені назви файлів зображень -->
                     <img src="cupfront.png" alt="Skripka Coffee Cup" class="cup-img" id="cup-view">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- БІЖУЧИЙ РЯДОК -->
     <div class="marquee-container">
         <div class="marquee-content">
             ✦ SOURDOUGH PASTRY ✦ SPECIALTY COFFEE ✦ NO SUGAR DESSERTS ✦ FRESH SMOOTHIES ✦ FAINA TOWN VIBES ✦ SPECIALTY COFFEE ✦ NO SUGAR DESSERTS ✦
         </div>
     </div>
 
-    <!-- ІНТЕРАКТИВНЕ МЕНЮ (BENTO GRID) -->
+    <!-- СЕКЦІЯ МЕНЮ З ФОНОВИМИ ІЛЮСТРАЦІЯМИ -->
     <section class="menu-section" id="menu">
+        
+        <!-- Додані фонові персонажі -->
+        <img src="meneating.png" alt="Man eating donut" class="bg-illustration man-eating-bg" id="man-ill">
+        <img src="girleating.png" alt="Girl drinking coffee" class="bg-illustration girl-eating-bg" id="girl-ill">
+
         <h2 class="section-title">НАШЕ МЕНЮ</h2>
         <div class="bento-grid">
             <div class="bento-card card-large">
@@ -321,7 +309,6 @@
         </div>
     </section>
 
-    <!-- ВІДГУКИ -->
     <section class="reviews-wrap">
         <div class="review-card">
             <div class="review-text active">
@@ -352,38 +339,25 @@
         window.addEventListener('mousemove', (e) => {
             const posX = e.clientX;
             const posY = e.clientY;
-
             dot.style.left = `${posX}px`;
             dot.style.top = `${posY}px`;
-
-            outline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
+            outline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
         });
 
-        // --- 2. 3D ІНТЕРАКТИВНИЙ СТАКАНЧИК ---
+        // --- 2. 3D СТАКАНЧИК ТА ПАРАЛАКС ІЛЮСТРАЦІЙ ---
         const cupImg = document.getElementById('cup-view');
         const cupWrapper = document.getElementById('cup-wrapper');
+        const manIll = document.getElementById('man-ill');
+        const girlIll = document.getElementById('girl-ill');
 
-        // Попереднє завантаження зображень для відсутності затримок
-        const images = {
-            left: 'cupleft.png',
-            front: 'cupfront.png',
-            right: 'cupright.png'
-        };
+        const images = { left: 'cupleft.png', front: 'cupfront.png', right: 'cupright.png' };
 
-        Object.values(images).forEach(src => {
-            const img = new Image();
-            img.src = src;
-        });
-
-        // Логіка відстеження миші
         document.addEventListener('mousemove', (e) => {
             const windowWidth = window.innerWidth;
             const xPercent = e.clientX / windowWidth;
+            const yPercent = e.clientY / window.innerHeight;
             
-            // Визначення ракурсу стаканчика
+            // Зміна ракурсу стаканчика
             if (xPercent < 0.38) {
                 if (!cupImg.src.includes(images.left)) cupImg.src = images.left;
             } else if (xPercent > 0.62) {
@@ -392,26 +366,31 @@
                 if (!cupImg.src.includes(images.front)) cupImg.src = images.front;
             }
 
-            // Плавний 3D-нахил (Parallax Effect)
-            const rotateY = (xPercent - 0.5) * 40;
-            const rotateX = (e.clientY / window.innerHeight - 0.5) * -25;
-
+            // Нахил стаканчика
             gsap.to(cupWrapper, {
-                rotationY: rotateY,
-                rotationX: rotateX,
+                rotationY: (xPercent - 0.5) * 40,
+                rotationX: (yPercent - 0.5) * -25,
                 duration: 0.6,
                 ease: "power2.out"
+            });
+
+            // Інтерактивний паралакс-ефект для ілюстрацій
+            gsap.to(manIll, {
+                x: (xPercent - 0.5) * 30,
+                y: (yPercent - 0.5) * 30,
+                duration: 1,
+                ease: "power1.out"
+            });
+            gsap.to(girlIll, {
+                x: (xPercent - 0.5) * -35,
+                y: (yPercent - 0.5) * -35,
+                duration: 1,
+                ease: "power1.out"
             });
         });
 
         // Плаваюча анімація стаканчика
-        gsap.to(cupWrapper, {
-            y: -18,
-            duration: 2.5,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut"
-        });
+        gsap.to(cupWrapper, { y: -18, duration: 2.5, repeat: -1, yoyo: true, ease: "sine.inOut" });
 
         // --- 3. СЛАЙДЕР ВІДГУКІВ ---
         const reviews = document.querySelectorAll('.review-text');
@@ -424,10 +403,7 @@
                     reviews[currentReview].classList.remove('active');
                     currentReview = index;
                     reviews[currentReview].classList.add('active');
-                    gsap.fromTo(reviews[currentReview], 
-                        { opacity: 0, y: 15 }, 
-                        { opacity: 1, y: 0, duration: 0.4 }
-                    );
+                    gsap.fromTo(reviews[currentReview], { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4 });
                 }
             });
         }
@@ -435,19 +411,22 @@
         document.getElementById('next').onclick = () => showReview((currentReview + 1) % reviews.length);
         document.getElementById('prev').onclick = () => showReview((currentReview - 1 + reviews.length) % reviews.length);
 
-        // --- 4. GSAP SCROLL ANIMATIONS ---
+        // --- 4. GSAP АНІМАЦІЯ ПОЯВИ СЕКЦІЙ ТА ІЛЮСТРАЦІЙ ---
         gsap.registerPlugin(ScrollTrigger);
 
         gsap.from('.bento-card', {
-            scrollTrigger: {
-                trigger: '.menu-section',
-                start: 'top 75%',
-            },
-            y: 50,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: 'power3.out'
+            scrollTrigger: { trigger: '.menu-section', start: 'top 75%' },
+            y: 50, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out'
+        });
+
+        gsap.from(manIll, {
+            scrollTrigger: { trigger: '.menu-section', start: 'top 80%' },
+            x: -100, opacity: 0, duration: 1.2, ease: 'power3.out'
+        });
+
+        gsap.from(girlIll, {
+            scrollTrigger: { trigger: '.menu-section', start: 'top 60%' },
+            x: 100, opacity: 0, duration: 1.2, ease: 'power3.out'
         });
     </script>
 </body>
