@@ -153,16 +153,18 @@
             transition: transform 0.2s ease-out;
         }
         
-        .man-eating-bg {
-            width: clamp(250px, 22vw, 380px);
-            left: 2%;
-            top: 15%;
+        /* ДІВЧИНА: Тепер ліворуч зверху + ЗБІЛЬШЕНА В 3 РАЗИ */
+        .girl-eating-bg {
+            width: clamp(660px, 60vw, 1020px);
+            left: -5%;
+            top: -5%;
         }
 
-        .girl-eating-bg {
-            width: clamp(220px, 20vw, 340px);
-            right: 3%;
-            bottom: 10%;
+        /* ХЛОПЕЦЬ: Тепер праворуч знизу */
+        .man-eating-bg {
+            width: clamp(250px, 22vw, 380px);
+            right: 2%;
+            bottom: 5%;
         }
 
         .bento-grid {
@@ -228,7 +230,8 @@
             .hero-text { flex: 0 0 100%; }
             .hero-visual { flex: 0 0 100%; height: 50vh; }
             .card-large, .card-medium, .card-small { grid-column: span 12; }
-            .man-eating-bg, .girl-eating-bg { opacity: 0.25; width: 180px; }
+            .girl-eating-bg { opacity: 0.15; width: 350px; left: -10%; }
+            .man-eating-bg { opacity: 0.25; width: 180px; }
             * { cursor: auto !important; }
             #cursor-dot, #cursor-outline { display: none; }
         }
@@ -277,12 +280,12 @@
         </div>
     </div>
 
-    <!-- СЕКЦІЯ МЕНЮ З ФОНОВИМИ ІЛЮСТРАЦІЯМИ -->
+    <!-- СЕКЦІЯ МЕНЮ С ЗМІНЕНИМИ ТА ЗБІЛЬШЕНИМИ ІЛЮСТРАЦІЯМИ -->
     <section class="menu-section" id="menu">
         
-        <!-- Додані фонові персонажі -->
-        <img src="meneating.png" alt="Man eating donut" class="bg-illustration man-eating-bg" id="man-ill">
+        <!-- Дівчина тепер ліворуч (побільшана) і Хлопець праворуч -->
         <img src="girleating.png" alt="Girl drinking coffee" class="bg-illustration girl-eating-bg" id="girl-ill">
+        <img src="meneating.png" alt="Man eating donut" class="bg-illustration man-eating-bg" id="man-ill">
 
         <h2 class="section-title">НАШЕ МЕНЮ</h2>
         <div class="bento-grid">
@@ -374,16 +377,16 @@
                 ease: "power2.out"
             });
 
-            // Інтерактивний паралакс-ефект для ілюстрацій
-            gsap.to(manIll, {
-                x: (xPercent - 0.5) * 30,
-                y: (yPercent - 0.5) * 30,
+            // Паралакс-ефект для ілюстрацій
+            gsap.to(girlIll, {
+                x: (xPercent - 0.5) * 40,
+                y: (yPercent - 0.5) * 40,
                 duration: 1,
                 ease: "power1.out"
             });
-            gsap.to(girlIll, {
-                x: (xPercent - 0.5) * -35,
-                y: (yPercent - 0.5) * -35,
+            gsap.to(manIll, {
+                x: (xPercent - 0.5) * -30,
+                y: (yPercent - 0.5) * -30,
                 duration: 1,
                 ease: "power1.out"
             });
@@ -411,7 +414,7 @@
         document.getElementById('next').onclick = () => showReview((currentReview + 1) % reviews.length);
         document.getElementById('prev').onclick = () => showReview((currentReview - 1 + reviews.length) % reviews.length);
 
-        // --- 4. GSAP АНІМАЦІЯ ПОЯВИ СЕКЦІЙ ТА ІЛЮСТРАЦІЙ ---
+        // --- 4. GSAP АНІМАЦІЇ ---
         gsap.registerPlugin(ScrollTrigger);
 
         gsap.from('.bento-card', {
@@ -419,14 +422,14 @@
             y: 50, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out'
         });
 
-        gsap.from(manIll, {
+        gsap.from(girlIll, {
             scrollTrigger: { trigger: '.menu-section', start: 'top 80%' },
-            x: -100, opacity: 0, duration: 1.2, ease: 'power3.out'
+            x: -120, opacity: 0, duration: 1.2, ease: 'power3.out'
         });
 
-        gsap.from(girlIll, {
+        gsap.from(manIll, {
             scrollTrigger: { trigger: '.menu-section', start: 'top 60%' },
-            x: 100, opacity: 0, duration: 1.2, ease: 'power3.out'
+            x: 120, opacity: 0, duration: 1.2, ease: 'power3.out'
         });
     </script>
 </body>
