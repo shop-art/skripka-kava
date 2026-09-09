@@ -143,7 +143,7 @@
             color: var(--blue-accent); margin-bottom: 60px; text-align: center; position: relative; z-index: 3;
         }
 
-        /* БОЖЕВІЛЬНО ЗБІЛЬШЕНІ ІЛЮСТРАЦІЇ ТА ЗМІНЕНІ МІСЦЯМИ */
+        /* ІЛЮСТРАЦІЇ ОДНАКОВОГО РОЗМІРУ */
         .bg-illustration {
             position: absolute;
             pointer-events: none;
@@ -151,19 +151,19 @@
             transition: transform 0.2s ease-out;
         }
         
-        /* 1. ДІВЧИНА: ЛІВОРУЧ ЗВЕРХУ + ЗБІЛЬШЕНА В 3+ РАЗИ */
+        /* 1. ДІВЧИНА: ЛІВОРУЧ ЗВЕРХУ (РОЗМІР ЯК У ЧОЛОВІКА) */
         .girl-eating-bg {
-            width: clamp(750px, 65vw, 1200px) !important;
-            left: -15%;
-            top: -10%;
+            width: clamp(300px, 28vw, 480px) !important;
+            left: 2%;
+            top: 0%;
             z-index: 1;
-            opacity: 0.75;
+            opacity: 0.85;
         }
 
         /* 2. ХЛОПЕЦЬ: ПРАВОРУЧ ЗНИЗУ */
         .man-eating-bg {
             width: clamp(300px, 28vw, 480px) !important;
-            right: 1%;
+            right: 2%;
             bottom: -5%;
             z-index: 1;
             opacity: 0.85;
@@ -232,7 +232,7 @@
             .hero-text { flex: 0 0 100%; }
             .hero-visual { flex: 0 0 100%; height: 50vh; }
             .card-large, .card-medium, .card-small { grid-column: span 12; }
-            .girl-eating-bg { opacity: 0.15; width: 450px !important; left: -20%; }
+            .girl-eating-bg { opacity: 0.2; width: 220px !important; }
             .man-eating-bg { opacity: 0.2; width: 220px !important; }
             * { cursor: auto !important; }
             #cursor-dot, #cursor-outline { display: none; }
@@ -282,13 +282,8 @@
         </div>
     </div>
 
-    <!-- СЕКЦІЯ МЕНЮ З ОНОВЛЕНИМИ КАРТИНКАМИ -->
     <section class="menu-section" id="menu">
-        
-        <!-- 1. Дівчина: Ліворуч зверху (Величезна) -->
         <img src="girleating.png" alt="Girl drinking coffee" class="bg-illustration girl-eating-bg" id="girl-ill">
-        
-        <!-- 2. Хлопець: Праворуч знизу -->
         <img src="meneating.png" alt="Man eating donut" class="bg-illustration man-eating-bg" id="man-ill">
 
         <h2 class="section-title">НАШЕ МЕНЮ</h2>
@@ -381,10 +376,10 @@
                 ease: "power2.out"
             });
 
-            // М'який паралакс для великих ілюстрацій
+            // М'який паралакс
             gsap.to(girlIll, {
-                x: (xPercent - 0.5) * 50,
-                y: (yPercent - 0.5) * 50,
+                x: (xPercent - 0.5) * 30,
+                y: (yPercent - 0.5) * 30,
                 duration: 1.2,
                 ease: "power1.out"
             });
@@ -428,12 +423,12 @@
 
         gsap.from(girlIll, {
             scrollTrigger: { trigger: '.menu-section', start: 'top 85%' },
-            x: -150, opacity: 0, duration: 1.4, ease: 'power3.out'
+            x: -100, opacity: 0, duration: 1.4, ease: 'power3.out'
         });
 
         gsap.from(manIll, {
             scrollTrigger: { trigger: '.menu-section', start: 'top 65%' },
-            x: 150, opacity: 0, duration: 1.4, ease: 'power3.out'
+            x: 100, opacity: 0, duration: 1.4, ease: 'power3.out'
         });
     </script>
 </body>
