@@ -114,22 +114,24 @@
             pointer-events: none;
             filter: drop-shadow(0 15px 30px rgba(0,0,0,0.06));
             transition: transform 0.2s ease-out;
-            height: clamp(380px, 40vh, 550px) !important;
-            width: auto !important;
-            opacity: 0.9;
+            opacity: 0.95;
         }
 
-        /* ДІВЧИНА: ВПРАВО ВОРХ ВІД СТАКАНЧИКА */
+        /* ДІВЧИНА: ЗБІЛЬШЕНА ДО БІЛЬШОГО РОЗМІРУ (ВЛІВО ВГОРУ) */
         .girl-eating-hero {
-            top: 8%;
-            right: -5%;
+            top: -2%;
+            left: -22%;
+            height: clamp(550px, 60vh, 750px) !important;
+            width: auto !important;
             z-index: 2;
         }
 
-        /* ХЛОПЕЦЬ: ВЛІВО ВНИЗ ВІД СТАКАНЧИКА */
+        /* ХЛОПЕЦЬ: СТАНДАРТНИЙ РОЗМІР (ВПРАВО ВНИЗ) */
         .man-eating-hero {
-            bottom: 5%;
-            left: -12%;
+            bottom: 2%;
+            right: -8%;
+            height: clamp(380px, 40vh, 500px) !important;
+            width: auto !important;
             z-index: 2;
         }
 
@@ -231,9 +233,9 @@
             .hero-text { flex: 0 0 100%; }
             .hero-visual { flex: 0 0 100%; height: 50vh; }
             .card-large, .card-medium, .card-small { grid-column: span 12; }
-            .hero-illustration { opacity: 0.15; height: 260px !important; }
-            .girl-eating-hero { top: 0; right: -10%; }
-            .man-eating-hero { bottom: 0; left: -10%; }
+            .hero-illustration { opacity: 0.15; height: 320px !important; }
+            .girl-eating-hero { top: 0; left: -10%; }
+            .man-eating-hero { bottom: 0; right: -10%; }
             * { cursor: auto !important; }
             #cursor-dot, #cursor-outline { display: none; }
         }
@@ -268,7 +270,7 @@
         </div>
 
         <div class="hero-visual">
-            <!-- ДІВЧИНА СПРАВА ВГОРА -->
+            <!-- ДІВЧИНА ЗБІЛЬШЕНА (ЗЛІВА ВГОРИ) -->
             <img src="girleating.png" alt="Girl drinking coffee" class="hero-illustration girl-eating-hero" id="girl-ill">
             
             <div class="cup-container">
@@ -277,7 +279,7 @@
                 </div>
             </div>
 
-            <!-- ХЛОПЕЦЬ ЗЛІВА ВНИЗ -->
+            <!-- ХЛОПЕЦЬ (СПРАВА ВНИЗУ) -->
             <img src="meneating1.png" alt="Man eating donut" class="hero-illustration man-eating-hero" id="man-ill">
         </div>
     </section>
@@ -381,14 +383,14 @@
 
             // Паралакс персонажів навколо стаканчика
             gsap.to(girlIll, {
-                x: (xPercent - 0.5) * 35,
-                y: (yPercent - 0.5) * 35,
+                x: (xPercent - 0.5) * -40,
+                y: (yPercent - 0.5) * -40,
                 duration: 1.2,
                 ease: "power1.out"
             });
             gsap.to(manIll, {
-                x: (xPercent - 0.5) * -35,
-                y: (yPercent - 0.5) * -35,
+                x: (xPercent - 0.5) * 35,
+                y: (yPercent - 0.5) * 35,
                 duration: 1.2,
                 ease: "power1.out"
             });
@@ -426,11 +428,11 @@
 
         // Початкова поява персонажів
         gsap.from(girlIll, {
-            x: 80, y: -50, opacity: 0, duration: 1.2, ease: 'power3.out'
+            x: -100, y: -60, opacity: 0, duration: 1.2, ease: 'power3.out'
         });
 
         gsap.from(manIll, {
-            x: -80, y: 50, opacity: 0, duration: 1.2, ease: 'power3.out'
+            x: 80, y: 50, opacity: 0, duration: 1.2, ease: 'power3.out'
         });
     </script>
 </body>
