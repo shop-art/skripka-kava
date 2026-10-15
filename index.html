@@ -120,7 +120,7 @@
         /* ДІВЧИНА (ЗСУНУТА ЩЕ ДАЛІ ЛІВОРУЧ) */
         .girleating34 {
             top: -2%;
-            left: -52%;
+            left: -65%;
             height: clamp(550px, 60vh, 750px) !important;
             width: auto !important;
             z-index: 2;
@@ -205,11 +205,13 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.04); position: relative; z-index: 2;
         }
         .review-text { 
-            font-size: 1.8rem; font-style: italic; line-height: 1.4; 
+            font-size: 1.5rem; font-style: italic; line-height: 1.5; 
             color: var(--blue-dark); margin-bottom: 25px; display: none; opacity: 0;
         }
         .review-text.active { display: block; opacity: 1; }
+        .review-stars { color: #FFD700; font-size: 1.4rem; margin-bottom: 12px; }
         .author { font-size: 1.1rem; font-weight: 700; color: var(--blue-accent); text-transform: uppercase; }
+        .author-meta { font-size: 0.85rem; color: #777; margin-top: 4px; font-weight: 400; text-transform: none; }
 
         .arrows { display: flex; justify-content: center; gap: 20px; margin-top: 40px; }
         .arrow { 
@@ -319,16 +321,32 @@
     <section class="reviews-wrap">
         <div class="review-card">
             <div class="review-text active">
+                <div class="review-stars">★★★★★</div>
+                "Ось це тістечко без цукру зі смаком матча - просто неймовірне! + приємна атмосфера та привітний персонал"
+                <div class="author">— Vadym Rusetski</div>
+                <div class="author-meta">Місцевий експерт • 37 відгуків • 25 фотографій • 4 роки тому</div>
+            </div>
+            <div class="review-text">
+                <div class="review-stars">★★★★★</div>
+                "Дуже крута кав'ярня зі смачною кавою і приємними бариста. Смаколики до кави завжди свіжі і смачні❤️"
+                <div class="author">— Katherine Kompanets (Katherine Kom)</div>
+                <div class="author-meta">Місцевий експерт • 101 відгук • 62 фотографії • 2 роки тому</div>
+            </div>
+            <div class="review-text">
+                <div class="review-stars">★★★★★</div>
+                "Смачна кава і затишно, тішить шо біля дому ☺️"
+                <div class="author">— Yana Vats</div>
+                <div class="author-meta">Місцевий експерт • 36 відгуків • 65 фотографій • 5 років тому</div>
+            </div>
+            <div class="review-text">
+                <div class="review-stars">★★★★★</div>
                 "Дуже атмосферно, кава 10/10! Найкраще місце для ранкового натхнення."
                 <div class="author">— Никита Дима</div>
             </div>
             <div class="review-text">
+                <div class="review-stars">★★★★★</div>
                 "Найкращі десерти без цукру у місті. Текстури неймовірні!"
                 <div class="author">— Liza Shpak</div>
-            </div>
-            <div class="review-text">
-                "Смузі та лимонади — моя любов. Завжди приємний сервіс!"
-                <div class="author">— Helga Lindemann</div>
             </div>
 
             <div class="arrows">
