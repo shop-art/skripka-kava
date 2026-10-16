@@ -51,7 +51,7 @@
 
         /* НАВІГАЦІЯ */
         header {
-            position: fixed; top: 0; width: 100%; padding: 30px 6%;
+            position: fixed; top: 0; width: 100%; padding: 25px 6%;
             display: flex; justify-content: space-between; align-items: center; 
             z-index: 1000; mix-blend-mode: difference;
         }
@@ -62,11 +62,39 @@
         }
         .logo:hover { transform: scale(1.05) rotate(-2deg); }
 
-        .nav-links { display: flex; gap: 30px; }
+        .nav-links { display: flex; gap: 25px; align-items: center; }
         .nav-link { 
             text-decoration: none; color: #fff; font-weight: 600; 
             font-size: 0.95rem; letter-spacing: 2px; text-transform: uppercase;
             position: relative; padding: 5px 0;
+        }
+
+        /* LIVE STATUS BADGE (Пункт 2) */
+        .status-badge {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 6px 16px;
+            border-radius: 30px;
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 1px;
+        }
+        .status-dot {
+            width: 8px; height: 8px;
+            background: #2ECC71;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #2ECC71;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
         /* HERO SECTION */
@@ -117,7 +145,7 @@
             opacity: 0.95;
         }
 
-        /* ДІВЧИНА (ЗСУНУТА ПРАВОРУЧ) */
+        /* ДІВЧИНА */
         .girleating34 {
             top: -2%;
             left: -32%;
@@ -126,7 +154,7 @@
             z-index: 2;
         }
 
-        /* ХЛОПЕЦЬ (ВПРАВО ВНИЗ) */
+        /* ХЛОПЕЦЬ */
         .man-eating-hero {
             bottom: 2%;
             right: -8%;
@@ -161,9 +189,36 @@
             100% { transform: translateX(-50%); }
         }
 
+        /* СЕКЦІЯ ЗРУЧНОСТЕЙ (Пункт 4) */
+        .features-section {
+            padding: 80px 6%;
+            position: relative;
+            z-index: 5;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .feature-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 30px;
+            text-align: center;
+            transition: 0.3s ease;
+        }
+        .feature-card:hover { transform: translateY(-5px); }
+        .feature-icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
+        .feature-card h4 { font-size: 1.2rem; color: var(--blue-dark); margin-bottom: 8px; }
+        .feature-card p { font-size: 0.95rem; color: #555; line-height: 1.4; }
+
         /* МЕНЮ СЕКЦІЯ */
         .menu-section { 
-            padding: 140px 6%; position: relative; z-index: 2; 
+            padding: 100px 6%; position: relative; z-index: 2; 
         }
         .section-title {
             font-family: 'Pilowlava', sans-serif; font-size: clamp(2.5rem, 5vw, 4.5rem);
@@ -195,9 +250,53 @@
             font-weight: 700; font-size: 0.95rem;
         }
 
+        /* ГАЛЕРЕЯ АТМОСФЕРИ (Пункт 3) */
+        .gallery-section {
+            padding: 100px 6%;
+            position: relative;
+            z-index: 5;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .gallery-item {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            height: 320px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(30, 58, 95, 0.7), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 25px;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
         /* ВІДГУКИ */
         .reviews-wrap { 
-            padding: 120px 6%; text-align: center; position: relative; z-index: 5;
+            padding: 100px 6%; text-align: center; position: relative; z-index: 5;
         }
         .review-card { 
             max-width: 800px; margin: 0 auto; padding: 60px 40px;
@@ -255,7 +354,13 @@
     <header>
         <a href="#" class="logo">СКРІПКА</a>
         <nav class="nav-links">
+            <!-- ПУНКТ 2: Live статус роботи -->
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                <span>ВІДЧИНЕНО ДО 21:00</span>
+            </div>
             <a href="#menu" class="nav-link">МЕНЮ</a>
+            <a href="#gallery" class="nav-link">АТМОСФЕРА</a>
             <a href="tel:0730081598" class="nav-link">ЗВ'ЯЗОК</a>
         </nav>
     </header>
@@ -292,6 +397,32 @@
         </div>
     </div>
 
+    <!-- ПУНКТ 4: Micro-features / Зручності -->
+    <section class="features-section">
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-icon">🐶</span>
+                <h4>Pet Friendly</h4>
+                <p>Раді вашим чотирилапим друзям! Завжди пригостимо мискою свіжої води.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">⚡️</span>
+                <h4>Work Friendly</h4>
+                <p>Швидкісний Wi-Fi та зручні розетки біля столиків для вашого ноутбука.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🌱</span>
+                <h4>Альтернативне молоко</h4>
+                <p>Вівсяне, мигдалеве, кокосове та безлактозне для вашої улюбленої кави.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🥐</span>
+                <h4>Свіжа випічка</h4>
+                <p>Щоранку крафтові круасани та крафтові десерти без цукру.</p>
+            </div>
+        </div>
+    </section>
+
     <section class="menu-section" id="menu">
         <h2 class="section-title">НАШЕ МЕНЮ</h2>
         <div class="bento-grid">
@@ -315,6 +446,31 @@
                 <p>Суперфуди, свіжі зелені мікси та енергія на весь день.</p>
                 <span class="price-tag">від 110 ₴</span>
             </div>
+        </div>
+    </section>
+
+    <!-- ПУНКТ 3: Галерея атмосфери з фото Google Maps -->
+    <section class="gallery-section" id="gallery">
+        <h2 class="section-title">НАША АТМОСФЕРА</h2>
+        <div class="gallery-grid">
+            <a href="https://www.google.com/maps/place/%D0%A1%D0%BA%D1%80%D1%96%D0%BF%D0%BA%D0%B0+%D0%9A%D0%B0%D0%B2%D0%B0/@50.4711191,30.4010644,17z" target="_blank" class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RydqPqFvEqHLD4FvaANdrgOTG4E1jDkZWMkjTjMh8Dgd573HGMbdAJs30iGbrmKGc7xFkb270Da5kJtUEkQVqzrlIO5AsBQyMcg6056ZZ_8-1J7tAPydrFeIee9wCDGFbGaZA=w800-h800-k-no" alt="Затишний інтер'єр Скріпка Кава">
+                <div class="gallery-overlay">
+                    <span>Переглянути на Google Maps 📍</span>
+                </div>
+            </a>
+            <a href="https://www.google.com/maps/place/%D0%A1%D0%BA%D1%80%D1%96%D0%BF%D0%BA%D0%B0+%D0%9A%D0%B0%D0%B2%D0%B0/@50.4711191,30.4010644,17z" target="_blank" class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RydqPqFvEqHLD4FvaANdrgOTG4E1jDkZWMkjTjMh8Dgd573HGMbdAJs30iGbrmKGc7xFkb270Da5kJtUEkQVqzrlIO5AsBQyMcg6056ZZ_8-1J7tAPydrFeIee9wCDGFbGaZA=w800-h800-k-no" alt="Кава та смаколики">
+                <div class="gallery-overlay">
+                    <span>Фото від відвідувачів ⭐</span>
+                </div>
+            </a>
+            <a href="https://www.google.com/maps/place/%D0%A1%D0%BA%D1%80%D1%96%D0%BF%D0%BA%D0%B0+%D0%9A%D0%B0%D0%B2%D0%B0/@50.4711191,30.4010644,17z" target="_blank" class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RydqPqFvEqHLD4FvaANdrgOTG4E1jDkZWMkjTjMh8Dgd573HGMbdAJs30iGbrmKGc7xFkb270Da5kJtUEkQVqzrlIO5AsBQyMcg6056ZZ_8-1J7tAPydrFeIee9wCDGFbGaZA=w800-h800-k-no" alt="Десерти у Файна Таун">
+                <div class="gallery-overlay">
+                    <span>Файна Таун Вайбс ✨</span>
+                </div>
+            </a>
         </div>
     </section>
 
@@ -442,6 +598,16 @@
         gsap.from('.bento-card', {
             scrollTrigger: { trigger: '.menu-section', start: 'top 75%' },
             y: 50, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out'
+        });
+
+        gsap.from('.feature-card', {
+            scrollTrigger: { trigger: '.features-section', start: 'top 80%' },
+            y: 30, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out'
+        });
+
+        gsap.from('.gallery-item', {
+            scrollTrigger: { trigger: '.gallery-section', start: 'top 75%' },
+            scale: 0.9, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power2.out'
         });
 
         // Початкова поява персонажів
