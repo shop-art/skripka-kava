@@ -69,7 +69,7 @@
             position: relative; padding: 5px 0;
         }
 
-        /* LIVE STATUS BADGE (Пункт 2) */
+        /* LIVE STATUS BADGE */
         .status-badge {
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
@@ -189,7 +189,7 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* СЕКЦІЯ ЗРУЧНОСТЕЙ (Пункт 4) */
+        /* СЕКЦІЯ ЗРУЧНОСТЕЙ */
         .features-section {
             padding: 80px 6%;
             position: relative;
@@ -250,7 +250,7 @@
             font-weight: 700; font-size: 0.95rem;
         }
 
-        /* ГАЛЕРЕЯ АТМОСФЕРИ (Пункт 3) */
+        /* ГАЛЕРЕЯ АТМОСФЕРИ (Стрічка фото з вирівнюванням пропорцій) */
         .gallery-section {
             padding: 100px 6%;
             position: relative;
@@ -259,21 +259,25 @@
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            gap: 25px;
             max-width: 1200px;
             margin: 0 auto;
         }
         .gallery-item {
             position: relative;
-            border-radius: 24px;
+            border-radius: 28px;
             overflow: hidden;
-            height: 320px;
+            aspect-ratio: 4 / 3; /* Задає єдиний ідеальний формат для всіх фото */
+            background: #e5e0d8;
             box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+            display: block;
+            text-decoration: none;
         }
         .gallery-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* Рівномірно заповнює блок без викривлень */
+            object-position: center;
             transition: transform 0.5s ease;
         }
         .gallery-item:hover img {
@@ -282,11 +286,13 @@
         .gallery-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(30, 58, 95, 0.7), transparent);
+            background: linear-gradient(to top, rgba(30, 58, 95, 0.75), transparent);
             display: flex;
             align-items: flex-end;
             padding: 25px;
             color: white;
+            font-weight: 600;
+            font-size: 1.05rem;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -354,7 +360,6 @@
     <header>
         <a href="#" class="logo">СКРІПКА</a>
         <nav class="nav-links">
-            <!-- ПУНКТ 2: Live статус роботи -->
             <div class="status-badge">
                 <span class="status-dot"></span>
                 <span>ВІДЧИНЕНО ДО 21:00</span>
@@ -397,7 +402,7 @@
         </div>
     </div>
 
-    <!-- ПУНКТ 4: Micro-features / Зручності -->
+    <!-- ЗРУЧНОСТІ -->
     <section class="features-section">
         <div class="features-grid">
             <div class="feature-card">
@@ -449,31 +454,29 @@
         </div>
     </section>
 
-    <!-- ПУНКТ 3: Галерея атмосфери з фото Google Maps -->
+    <!-- ГАЛЕРЕЯ АТМОСФЕРИ (Реальні фото з вирівняними пропорціями) -->
     <section class="gallery-section" id="gallery">
         <h2 class="section-title">НАША АТМОСФЕРА</h2>
         <div class="gallery-grid">
-            <a href="https://www.google.com/maps/place/%D0%A1%D0%BA%D1%80%D1%96%D0%BF%D0%BA%D0%B0+%D0%9A%D0%B0%D0%B2%D0%B0/@50.4711191,30.4010644,17z" target="_blank" class="gallery-item">
-                <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RydqPqFvEqHLD4FvaANdrgOTG4E1jDkZWMkjTjMh8Dgd573HGMbdAJs30iGbrmKGc7xFkb270Da5kJtUEkQVqzrlIO5AsBQyMcg6056ZZ_8-1J7tAPydrFeIee9wCDGFbGaZA=w800-h800-k-no" alt="Затишний інтер'єр Скріпка Кава">
-                <div class="gallery-overlay">
-                    <span>Переглянути на Google Maps 📍</span>
-                </div>
+            <!-- Фото 1 -->
+            <a href="https://www.google.com/maps/place/%D0%A1%D0%BA%D1%80%D1%96%D0%BF%D0%BA%D0%B0+%D0%9A%D0%B0%D0%B2%D0%B0/@50.4710644,30.4010649,3a,75y,90t/data=!3m8!1e2!3m6!1sCIHM0ogKEICAgIDqy4TRNA!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FANWiy9SBbitwPBGdeh5x_NfwPMYSlB03v3aYfvVcQ3AoD265hgIqUktGsRSNtMt_bHnRi9VJRiNZEiXZhEq6krZ61480BI64ueHZyVgnN9QCEBXyMz-vEYnnoMQF-x3zP7UZQsV6Tpw%3Dw203-h212-k-no!7i1125!8i1175!4m9!3m8!1s0x40d4cd7b691e1b85:0x4608c6966ed81201!8m2!3d50.4711191!4d30.4010644!10e5!14m1!1BCgIYIA!16s%2Fg%2F11nh98jyn7?entry=ttu" target="_blank" class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SBbitwPBGdeh5x_NfwPMYSlB03v3aYfvVcQ3AoD265hgIqUktGsRSNtMt_bHnRi9VJRiNZEiXZhEq6krZ61480BI64ueHZyVgnN9QCEBXyMz-vEYnnoMQF-x3zP7UZQsV6Tpw=w800-h800-k-no" alt="Скріпка Кава Інтер'єр">
+                <div class="gallery-overlay"><span>Переглянути на Google Maps 📍</span></div>
             </a>
-            <a href="https://www.google.com/maps/place/%D0%A1%D0%BA%D1%80%D1%96%D0%BF%D0%BA%D0%B0+%D0%9A%D0%B0%D0%B2%D0%B0/@50.4711191,30.4010644,17z" target="_blank" class="gallery-item">
-                <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RydqPqFvEqHLD4FvaANdrgOTG4E1jDkZWMkjTjMh8Dgd573HGMbdAJs30iGbrmKGc7xFkb270Da5kJtUEkQVqzrlIO5AsBQyMcg6056ZZ_8-1J7tAPydrFeIee9wCDGFbGaZA=w800-h800-k-no" alt="Кава та смаколики">
-                <div class="gallery-overlay">
-                    <span>Фото від відвідувачів ⭐</span>
-                </div>
+            <!-- Фото 2 -->
+            <a href="https://www.google.com/maps/place/%D0%A1%D0%BA%D1%80%D1%96%D0%BF%D0%BA%D0%B0+%D0%9A%D0%B0%D0%B2%D0%B0/@50.4710644,30.4010649,3a,75y,90t/data=!3m8!1e2!3m6!1sCIHM0ogKEICAgIDx_OGzzQE!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FANWiy9TovD1ZpvOCPYZ-x6Aofzcp0Lsix2dKBLq3daxO7Hbcfr98ouitpOAtFKFTdI-Okp6m4NHHsHaJg9NU8eqiTjHyU7HB3rUAsXWi-Ixiog-xYUjzH9ZxqrBbODSLKFSSiiFd9jUrSg%3Dw203-h360-k-no!7i2017!8i3586!4m9!3m8!1s0x40d4cd7b691e1b85:0x4608c6966ed81201!8m2!3d50.4711191!4d30.4010644!10e5!14m1!1BCgIYIA!16s%2Fg%2F11nh98jyn7?entry=ttu" target="_blank" class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TovD1ZpvOCPYZ-x6Aofzcp0Lsix2dKBLq3daxO7Hbcfr98ouitpOAtFKFTdI-Okp6m4NHHsHaJg9NU8eqiTjHyU7HB3rUAsXWi-Ixiog-xYUjzH9ZxqrBbODSLKFSSiiFd9jUrSg=w800-h800-k-no" alt="Кава та десерти">
+                <div class="gallery-overlay"><span>Переглянути на Google Maps 📍</span></div>
             </a>
-            <a href="https://www.google.com/maps/place/%D0%A1%D0%BA%D1%80%D1%96%D0%BF%D0%BA%D0%B0+%D0%9A%D0%B0%D0%B2%D0%B0/@50.4711191,30.4010644,17z" target="_blank" class="gallery-item">
-                <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RydqPqFvEqHLD4FvaANdrgOTG4E1jDkZWMkjTjMh8Dgd573HGMbdAJs30iGbrmKGc7xFkb270Da5kJtUEkQVqzrlIO5AsBQyMcg6056ZZ_8-1J7tAPydrFeIee9wCDGFbGaZA=w800-h800-k-no" alt="Десерти у Файна Таун">
-                <div class="gallery-overlay">
-                    <span>Файна Таун Вайбс ✨</span>
-                </div>
+            <!-- Фото 3 -->
+            <a href="https://www.google.com/maps/place/%D0%A1%D0%BA%D1%80%D1%96%D0%BF%D0%BA%D0%B0+%D0%9A%D0%B0%D0%B2%D0%B0/@50.4710644,30.4010649,3a,75y,90t/data=!3m8!1e2!3m6!1sCIHM0ogKEICAgIDn18mbswE!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FANWiy9RcDxqXM-Q7-CsEWuUkRxswO4ABRAVqbHI99XkPpdH80NDZbnYWg-9ZFWz-heAJCElV9RxNbj65BUb_TIzlcVaB0-HOLt5IKQpYfyT5XMA0d0__QKBA13lb6AVK4NkxbqPreJubNg%3Dw203-h360-k-no!7i3213!8i5712!4m9!3m8!1s0x40d4cd7b691e1b85:0x4608c6966ed81201!8m2!3d50.4711191!4d30.4010644!10e5!14m1!1BCgIYIA!16s%2Fg%2F11nh98jyn7?entry=ttu" target="_blank" class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RcDxqXM-Q7-CsEWuUkRxswO4ABRAVqbHI99XkPpdH80NDZbnYWg-9ZFWz-heAJCElV9RxNbj65BUb_TIzlcVaB0-HOLt5IKQpYfyT5XMA0d0__QKBA13lb6AVK4NkxbqPreJubNg=w800-h800-k-no" alt="Затишна атмосфера">
+                <div class="gallery-overlay"><span>Переглянути на Google Maps 📍</span></div>
             </a>
         </div>
     </section>
 
+    <!-- ВІДГУКИ -->
     <section class="reviews-wrap">
         <div class="review-card">
             <div class="review-text active">
